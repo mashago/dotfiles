@@ -1,0 +1,29 @@
+#for zsh
+ZSH_THEME="gentoo"
+plugins=(
+  git
+  zsh-autosuggestions
+)
+
+ulimit -c unlimited
+export EDITOR=vim
+
+alias vi='vim'
+alias vizshrc='vi ~/.zshrc'
+alias sozshrc='source ~/.zshrc'
+
+#alias ls='ls --color'
+#alias ll='ls --color -l'
+alias grep='grep --color -n'
+alias gr='grep --color -n -r'
+alias grlua='find . -name "*.lua" | xargs grep --color -n'
+alias grc='find . -name "*.[ch]" | xargs grep --color -n'
+alias grpy='find . -name "*.py" | xargs grep --color -n'
+
+alias vif='vim $(fzf)'
+
+alias glog='git log --pretty=format:"%H [%an] [%ad] %s" | head -n '
+alias glogme='git log --author=masha.lmz --pretty=format:"%H [%an] [%ad] %s" | head -n '
+alias slog='svn log -v -l '
+alias slogme='svn log --search masha.lmz -v -l '
+
