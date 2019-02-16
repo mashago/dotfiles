@@ -1,19 +1,21 @@
 [color]
-    diff = auto
-    ui = true
+	diff = auto
+	ui = true
 [push]
-    default = simple
+	default = simple
 [alias]
-    st = status
-    co = checkout
-    br = branch
-    mg = merge
-    ci = commit
-    chp = cherry-pick
+	st = status
+	co = checkout
+	br = branch
+	mg = merge
+	ci = commit
+	chp = cherry-pick
 [pull]
-    rebase = true
-    stat = true
+	rebase = true
+	stat = true
+[pager]
+	branch = false
 [mergetool]
-    prompt = false
+	prompt = false
 [mergetool "vimdiff"]
-    cmd = vim -d "$LOCAL" "$MERGED" "$REMOTE" -c '2wincmd w'
+	cmd = vim -d "$LOCAL" "$MERGED" "$REMOTE" -c '2wincmd w'
