@@ -1,5 +1,6 @@
 #for zsh
-ZSH_THEME="gentoo"
+#ZSH_THEME="gentoo"
+ZSH_THEME="daveverwer"
 plugins=(
   git
   zsh-autosuggestions
