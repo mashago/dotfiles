@@ -1,3 +1,13 @@
+BoldAsFont=-1
+FontHeight=14
+CursorColour=253,0,0
+CursorType=block
+Columns=181
+Rows=47
+Term=xterm-256color
+BellType=0
+Font=Inconsolata
+
 ForegroundColour=208,208,208
 BackgroundColour=19,19,19
 CursorColour=253,157,79
