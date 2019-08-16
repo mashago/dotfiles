@@ -1,5 +1,4 @@
 set backspace=indent,eol,start
-set ai
 set ts=4 sw=4
 set ruler
 set nonu
@@ -27,6 +26,8 @@ let g:rehash256 = 1
 augroup filetype
     au! BufRead,BufNewFile *.sproto setfiletype sproto
 augroup end
+
+" Uncomment /etc/vim/vimrc jump-last-position and plugin-indent-on
 
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
