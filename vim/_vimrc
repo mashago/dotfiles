@@ -4,21 +4,27 @@ set ruler
 set nonu
 set hls
 set incsearch
-set smartindent
 set wildmenu
 set wildmode=list:longest
 set showcmd
 set formatoptions=tcq
 set fileformats=unix,dos
 set t_Co=256
-syntax on
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set expandtab
 "set noexpandtab
 set clipboard=unnamed
+set nofixendofline
+set smartindent
+syntax on
 
-colorscheme molokai
+" Uncomment the following to have Vim load indentation rules and plugins
+" according to the detected filetype.
+filetype on
+filetype plugin indent on
+
 "colorscheme desert
+colorscheme molokai
 let g:molokai_original = 1
 let g:rehash256 = 1
 " autocmd vimenter * NERDTree
@@ -29,23 +35,48 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-" Uncomment the following to have Vim load indentation rules and plugins
-" according to the detected filetype.
-if has("autocmd")
-  filetype plugin indent on
-endif
-
 augroup filetype
     au! BufRead,BufNewFile *.sproto setfiletype sproto
 augroup end
 
-call plug#begin('~/.vim/plugged')
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-call plug#end()
+" vim-plugin
+" call plug#begin('~/.vim/plugged')
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" call plug#end()
 
 :nnoremap <C-P> :FZF<CR>
 
 "let g:neocomplete#enable_at_startup = 1
 "let g:neocomplete#disable_auto_complete = 1
 ":inoremap <expr><C-n> neocomplete#start_manual_complete()
+
+" zoom tab
+function! Zoom ()
+    " check if is the zoomed state (tabnumber > 1 && window == 1)
+    if tabpagenr('$') > 1 && tabpagewinnr(tabpagenr(), '$') == 1
+        let l:cur_winview = winsaveview()
+        let l:cur_bufname = bufname('')
+        tabclose
+
+        " restore the view
+        if l:cur_bufname == bufname('')
+            call winrestview(cur_winview)
+        endif
+    else
+        tab split
+    endif
+endfunction
+nmap <leader>z :call Zoom()<CR>
+
+" Search for selected text, forwards or backwards.
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R>=&ic?'\c':'\C'<CR><C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gVzv:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy?<C-R>=&ic?'\c':'\C'<CR><C-R><C-R>=substitute(
+  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gVzv:call setreg('"', old_reg, old_regtype)<CR>
 
