@@ -20,35 +20,18 @@ syntax on
 
 " Uncomment the following to have Vim load indentation rules and plugins
 " according to the detected filetype.
-filetype on
 filetype plugin indent on
 
 "colorscheme desert
 colorscheme molokai
 let g:molokai_original = 1
 let g:rehash256 = 1
-" autocmd vimenter * NERDTree
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
-
-augroup filetype
-    au! BufRead,BufNewFile *.sproto setfiletype sproto
-augroup end
-
-" vim-plugin
-" call plug#begin('~/.vim/plugged')
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" call plug#end()
-
-:nnoremap <C-P> :FZF<CR>
-
-"let g:neocomplete#enable_at_startup = 1
-"let g:neocomplete#disable_auto_complete = 1
-":inoremap <expr><C-n> neocomplete#start_manual_complete()
 
 " zoom tab
 function! Zoom ()
@@ -80,3 +63,14 @@ vnoremap <silent> # :<C-U>
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gVzv:call setreg('"', old_reg, old_regtype)<CR>
 
+augroup filetype
+    au! BufRead,BufNewFile *.sproto setfiletype sproto
+augroup end
+
+:nnoremap <C-P> :FZF<CR>
+
+
+" vim-plugin
+" call plug#begin('~/.vim/plugged')
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" call plug#end()
