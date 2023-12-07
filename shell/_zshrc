@@ -1,10 +1,14 @@
-#for zsh
+#for zsh begin
 #ZSH_THEME="gentoo"
 ZSH_THEME="daveverwer"
 plugins=(
   git
   zsh-autosuggestions
 )
+
+#for oh-my-zsh
+DISABLE_MAGIC_FUNCTIONS="true"
+#for zsh end
 
 ulimit -c unlimited
 export EDITOR=vim
