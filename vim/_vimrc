@@ -18,6 +18,9 @@ set nofixendofline
 set smartindent
 syntax on
 
+" for cygwin
+" let $TERM="cygwin"
+
 " Uncomment the following to have Vim load indentation rules and plugins
 " according to the detected filetype.
 filetype plugin indent on
@@ -72,5 +75,6 @@ augroup end
 
 " vim-plugin
 " call plug#begin('~/.vim/plugged')
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
 " call plug#end()
